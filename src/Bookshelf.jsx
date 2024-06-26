@@ -1,29 +1,26 @@
 import "./index.css";
 import { useState } from "react";
 
-const handleInputChange = (event) => {
-  setNewBook({ ...newBook, [event.target.name]: event.target.value });
-};
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  setBooks([...books, newBook]);
-  setNewBook({ title: "", author: "" });
-};
-
 const Bookshelf = () => {
+  const [books, setBooks] = useState([
+    { title: "Fourth Wing", author: "Rebecca Yarros" },
+    { title: "The Lion, the Witch and the Wardrobe", author: "C.S. Lewis" },
+  ]);
 
-const [books, setBooks] = useState([
-  { title: "Fourth Wing", author: "Rebecca Yarros" },
-  { title: "The Lion, the Witch and the Wardrobe", author: "C.S. Lewis" },
-]);
+  const [newBook, setNewBook] = useState({ title: "", author: "" });
 
-const [newBook, setNewBook] = useState({ title: "", author: "" });
-// 5. Map through your books
-// Within the BookShelf component, use the map function to iterate over the books array. This array contains the list of books added by the user.
-// For each book in the array, create a “book card”. Use a <div> to wrap the display of each book’s title and author.
-// Ensure each book card is distinct and clearly displays the title and author of the book.
+  const handleInputChange = (event) => {
+    setNewBook((prevBook) => ({
+      ...prevBook,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setBooks((prevBooks) => [...prevBooks, newBook]);
+    setNewBook({ title: "", author: "" });
+  };
 
   return (
     <div className="bookshelfDiv">
@@ -48,7 +45,7 @@ const [newBook, setNewBook] = useState({ title: "", author: "" });
       </form>
       <div className="bookCardsDiv">
         {books.map((book) => (
-          <div className="bookCard">
+          <div className="bookCard" key={book.title}>
             <h3>{book.title}</h3>
             <p>{book.author}</p>
           </div>
@@ -59,3 +56,4 @@ const [newBook, setNewBook] = useState({ title: "", author: "" });
 };
 
 export default Bookshelf;
+
