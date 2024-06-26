@@ -44,9 +44,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: blueviolet;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin-top: 1rem;
 }
 button:hover {
   border-color: #646cff;
@@ -64,6 +65,7 @@ form {
 
 input {
   padding: 5px;
+  background: white;
 }
 
 .bookshelfDiv {
@@ -102,7 +104,7 @@ input {
   padding: 5px;
   width: 40%;
   margin: 15px 10px;
-  background-color: rgb(155, 155, 155);
+  background-color: #ADD8E6;
   color: black;
 }
 
